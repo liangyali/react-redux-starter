@@ -8,7 +8,7 @@ const DEBUG = !!argv.debug;
 module.exports = {
   entry: {
     app: './src/main.js',
-    vendor: ['react', 'react-dom','redux', 'axios']
+    vendor: ['react', 'react-dom', 'redux', 'axios']
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -25,8 +25,11 @@ module.exports = {
 
   }],
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendor', /* filename= */'js/vendor.js')
+    new webpack.optimize.CommonsChunkPlugin( /* chunkName= */ 'vendor', /* filename= */ 'js/vendor.js')
   ].concat(DEBUG ? [] : [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"'
+    }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -37,16 +40,14 @@ module.exports = {
     new webpack.optimize.AggressiveMergingPlugin()
   ]),
   module: {
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel'
-      }, {
-        test: /\.jsx?$/,
-        loader: 'babel!eslint',
-        exclude: /node_modules/
-      }
-    ]
+    loaders: [{
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      loader: 'babel'
+    }, {
+      test: /\.jsx?$/,
+      loader: 'babel!eslint',
+      exclude: /node_modules/
+    }]
   }
 };
