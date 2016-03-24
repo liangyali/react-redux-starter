@@ -12,5 +12,5 @@ export default () => {
   // index
   router.get('/', controllers.home.index);
 
-  return router;
+  return router.routes();
 };

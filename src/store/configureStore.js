@@ -1,9 +1,6 @@
-import {createStore,applyMiddleware,combineReducers} from 'redux';
-import {todos} from '../reducers';
+import {createStore,applyMiddleware,compose} from 'redux';
+import thunk from 'react-redux';
 
-const reducers = combineReducers({
-  todos
-});
-export default function configureStore(initialState={}){
-  return createStore(reducers,initialState);
+export default function configureStore(reducers,initialState={}){
+  return  createStore(reducers,initialState,window.devToolsExtension ? window.devToolsExtension() : undefined);
 }

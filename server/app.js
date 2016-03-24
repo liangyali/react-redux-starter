@@ -9,7 +9,6 @@ import logger from 'koa-logger';
 import routes from './routes';
 
 const app = koa();
-const router = new routes();
 
 app.use(logger());
 
@@ -65,7 +64,7 @@ app.use(json({pretty: app.env === 'development'}));
 /**
  * setup routes
  */
-app.use(router.routes());
+app.use(routes());
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, err => {

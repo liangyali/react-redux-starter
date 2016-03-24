@@ -1,21 +1,22 @@
-import React,{PropTypes,Component} from 'react';
+import React, {PropTypes, Component} from 'react';
 
-
-class TodoList extends Component{
-  render(){
-
+class TodoList extends Component {
+  render() {
+    let todos = this.props.todos||[];
     return (
       <ul>
-      {this.props.todos.map((todo)=>{
-        <li>{todo.text}</li>
-      })}
+        {(todos||[]).map((todo) => {
+          return (
+            <li key={todo.text+Math.random()}>{todo.text}</li>
+          )
+        })}
       </ul>
     );
   }
 }
 
-TodoList.PropTypes={
-  todos:PropTypes.array.isRequired
+TodoList.PropTypes = {
+  todos: PropTypes.array.isRequired
 };
 
 export default TodoList;
