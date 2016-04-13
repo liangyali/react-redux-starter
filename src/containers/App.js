@@ -1,15 +1,20 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import TodoList from '../components/TodoList';
+import {fetchTodos} from '../actions/Todos';
 
 class App extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    this.interval=setInterval(()=>{
+      this.props.update();
+    },2000);
+  }
 
   render() {
     return (
       <div>
-        <button onClick={this.props.update.bind(this)}>add some</button>
-        <TodoList todos={this.props.todos}></TodoList>
+        <button onClick={this.props.update} className='btn btn-success'>UPDATE TODOS</button>
+        <TodoList todos={this.props.todos.items}></TodoList>
       </div>
     );
   }
@@ -17,25 +22,15 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    todos: state.todos.todos || []
+    todos: state.todos||{}
   }
 }
 
 function mapDispatchToProps(dispatch) {
+
   return {
     update: () => {
-      dispatch({
-        type: 'FETCH_ALL',
-        todos: [
-          {
-            text: 'item'
-          }, {
-            text: 'item2'
-          }, {
-            text: 'item3'
-          }
-        ]
-      })
+      dispatch(fetchTodos('test'))
     }
   }
 }
