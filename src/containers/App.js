@@ -5,24 +5,26 @@ import {fetchTodos} from '../actions/Todos';
 
 class App extends Component {
   componentDidMount() {
-    this.interval=setInterval(()=>{
-      this.props.update();
-    },2000);
+    this.props.update();
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.props.update} className='btn btn-success'>UPDATE TODOS</button>
-        <TodoList todos={this.props.todos.items}></TodoList>
+        <div style={{
+          margin: '20px 10px'
+        }}>
+          <button onClick={this.props.update} className='btn btn-sm btn-primary'>更新数据</button><br/>
+        </div>
+        <TodoList todos={this.props.todos}></TodoList>
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   return {
-    todos: state.todos||{}
+    todos: state.todos || {}
   }
 }
 

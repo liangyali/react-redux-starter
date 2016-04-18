@@ -10,21 +10,23 @@ import {
 //default return state
 export const todos = createReducer({}, {
   [FETCH_TODOS_REQUEST](state, action) {
-    return {...state,
-      isFeting:true
+    return {
+      ...state,
+      isFeting: true
     }
   },
   [FETCH_TODOS_SUCCESS](state, action) {
-    return {...state,
-      isFeting: false,
-      items:action.payload,
-      updatedAt:+new Date()
-    }
-  },
-  [FETCH_TODOS_FAILURE](state,action){
     return {
       ...state,
-      error:action.error
+      isFeting: false,
+      items: action.payload,
+      updatedAt: +new Date()
+    }
+  },
+  [FETCH_TODOS_FAILURE](state, action) {
+    return {
+      ...state,
+      error: action.error
     }
   }
 });

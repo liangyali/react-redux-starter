@@ -10,7 +10,7 @@ export default () => {
   });
 
   // index
-  router.get('/', controllers.home.index);
+  router.get('/app/*', controllers.home.index);
   router.get('/todos',controllers.todos.index);
 
   return router.routes();

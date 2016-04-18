@@ -1,16 +1,27 @@
-import {render} from 'react-dom';
-import {createStore, applyMiddleware, combineReducers} from 'redux';
-import {Provider} from 'react-redux';
+import { render } from 'react-dom';
+import { combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import React from 'react';
+
 import configureStore from './store/configureStore';
-import {App} from './containers';
-import {todos} from './reducers';
-import thunk from 'redux-thunk';
+import { App, Detail } from './containers';
+import { todos } from './reducers';
 
-let createStoreWithMiddleware = applyMiddleware(thunk)(configureStore)
-const reducers = combineReducers({todos});
+import PageNotFound from './components/PageNotFound';
 
-const store = createStoreWithMiddleware(reducers);
+const reducers = combineReducers({ todos });
+const store = configureStore(reducers, {}, window.devToolsExtension
+  ? window.devToolsExtension()
+  : undefined);
 
 render(
-  <Provider store={store}><App/></Provider>, document.getElementById('root'));
+  <Provider store={store}>
+  <Router history={browserHistory}>
+    <Route path="/app">
+      <Route path="detail/:id" component={Detail} />
+      <IndexRoute component={App} />
+    </Route>
+    <Route path="*" component={ PageNotFound } />
+  </Router>
+</Provider>, document.getElementById('root'));

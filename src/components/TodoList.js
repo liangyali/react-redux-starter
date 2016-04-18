@@ -1,18 +1,35 @@
 import React, {PropTypes, Component} from 'react';
+import {Link} from 'react-router';
 
 class TodoList extends Component {
   render() {
-    let todos = this.props.todos || [];
+    let todos = this.props.todos || {};
+
+    if(this.props.todos.isFeting){
+      return (
+        <div>Loading</div>
+      );
+    }
     return (
-      <ul className="list-group">
-        {(todos || []).map((todo) => {
-          return (
-            <li key={todo.id} className="list-group-item">
-              <span className="label label-success" style={{marginLeft:'20px'}}>{todo.updatedAt}</span>
-            </li>
-          )
-        })}
-      </ul>
+      <table className="table table-inverse">
+        <thead>
+          <tr key='head'>
+            <th>#</th>
+            <th>Name</th>
+            <th>更新时间Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          {(todos.items || []).map((todo) => {
+            return (
+              <tr key={todo.id}>
+              <th scope="row">{todo.id}</th>
+              <td> <Link to={`/app/detail/${todo.id}`}>{todo.name}</Link> </td>
+              <td width='250'>{todo.updatedAt}</td >
+              </tr>);
+          })}
+        </tbody>
+      </table>
     );
   }
 }
