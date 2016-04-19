@@ -1,9 +1,14 @@
-export  function* index(){
-  this.body=[1,2,3,4,5,6,7,8].map((item)=>{
+/**
+ * 默认首页
+ * @return {[type]} [description]
+ */
+export function* index() {
+  this.body = [1, 2, 3, 4, 5, 6, 7, 8].map((item) => {
+    //  TODO: somhintg
     return {
-      id:item,
-      name:`item_${item}`,
-      updatedAt:new Date()
-    }
+      id: item,
+      name: `item_${item}`,
+      updatedAt: new Date(),
+    };
   });
 }

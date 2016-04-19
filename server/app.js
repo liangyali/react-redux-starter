@@ -1,58 +1,30 @@
 import koa from 'koa';
-import json from 'koa-json';
-import compress from 'koa-compress';
 import render from 'koa-swig';
 import path from 'path';
+import debug from 'debug';
 import logger from 'koa-logger';
 import routes from './routes';
-
-import webpackMiddleware from 'koa-webpack-dev-middleware';
-import webpackHotMiddleware from 'koa-webpack-hot-middleware';
-import webpack from 'webpack';
-import webpackConfig from '../webpack/webpack.development';
+import webpack from '../webpack';
 
 const app = koa();
-const compiler = webpack(webpackConfig);
-
-app.use(logger());
-
-/**----------------------------------------------------------
- * 异常处理
- ----------------------------------------------------------*/
-app.use(function*(next) {
-  try {
-    yield next;
-  } catch(err) {
-
-    if(401 == err.status) {
-      this.status = 401;
-      this.set('WWW-Authenticate', 'Basic');
-      this.body = 'cant haz that';
-      return;
-    }
-
-    this.status = err.status || 500;
-    this.body = {
-      status: this.status,
-      message: err.message,
-    };
-    this.app.emit('error', err, this);
-  }
-});
-
-app.on('err', (err) => {
-  console.error(err);
-});
-
-app.use(webpackMiddleware(compiler, {
-  publicPath: webpackConfig.output.publicPath,
-  noInfo: false,
-}));
-
-app.use(webpackHotMiddleware(compiler));
+const dbg = debug('app');
 
 /**
- * setup render
+* Koa错误处理
+*/
+
+/**
+ * 测试环境webpack的集成
+ */
+webpack(app);
+
+/**
+ * Koa日志的中间件集成
+ */
+app.use(logger());
+
+/**
+ * Koa日志中间件集成
  */
 app.context.render = render({
   root: path.join(__dirname, 'views'),
@@ -62,25 +34,17 @@ app.context.render = render({
 });
 
 /**
- * static server for /public
+ * Koa静态资源中间件集成
  */
 app.use(require('koa-static')(path.join(__dirname, '../build')));
 
 /**
- * setup some middleware
- */
-app.use(compress());
-app.use(json({
-  pretty: app.env === 'development',
-}));
-
-/**
- * setup routes
+ * Koa路由中间件集成
  */
 app.use(routes());
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
-  process.send && process.send('online');
-  console.log(`listening on PORT: ${PORT}`);
+  if (process.send) process.send('online');
+  dbg(`listening on PORT: ${PORT}`);
 });

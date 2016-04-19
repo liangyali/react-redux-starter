@@ -1,8 +1,7 @@
-import {version} from '../../package.json';
+import { version } from '../../package.json';
 
-export function* index(){
-
-  yield this.render('home/index',{
-    version: version
+export function* index() {
+  yield this.render('home/index', {
+    version,
   });
 }

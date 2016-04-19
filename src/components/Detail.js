@@ -1,16 +1,16 @@
-import React, {PropTypes, Component} from 'react';
+import React, { PropTypes } from 'react';
 
-class Detail extends Component {
+class Detail {
   render() {
     return (
       <div style={{
         padding: '20px',
-        fontSize:'24px'
+        fontSize: '24px'
       }}>
-        <button className='btn btn-list' onClick={() => this.context.router.goBack()}>返回ddsd</button>
+        <button className="btn btn-list" onClick={() => this.context.router.goBack()}>返回X</button>
         <span>{JSON.stringify(this.props.params)}</span>
       </div>
-    );
+      );
   }
 }
 
@@ -20,6 +20,6 @@ Detail.PropTypes = {
 
 Detail.contextTypes = {
   router: PropTypes.object.isRequired
-}
+};
 
 export default Detail;

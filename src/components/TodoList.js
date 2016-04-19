@@ -1,36 +1,37 @@
-import React, {PropTypes, Component} from 'react';
-import {Link} from 'react-router';
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
-class TodoList extends Component {
+class TodoList {
   render() {
-    let todos = this.props.todos || {};
+    const todos = this.props.todos || {};
 
-    if(this.props.todos.isFeting){
+    if (this.props.todos.isFeting) {
       return (
         <div>Loading</div>
-      );
+        );
     }
     return (
-      <table className="table table-inverse">
+      <table className="table">
         <thead>
-          <tr key='head'>
-            <th>#</th>
-            <th>Name</th>
-            <th>更新时间Update</th>
+          <tr key="head">
+            <th>编号</th>
+            <th>名称</th>
+            <th>更新时间</th>
           </tr>
         </thead>
         <tbody>
-          {(todos.items || []).map((todo) => {
-            return (
-              <tr key={todo.id}>
+          {(todos.items || []).map((todo) => (
+        <tr key={todo.id}>
               <th scope="row">{todo.id}</th>
-              <td> <Link to={`/app/detail/${todo.id}`}>{todo.name}</Link> </td>
-              <td width='250'>{todo.updatedAt}</td >
-              </tr>);
-          })}
+              <td>
+                <Link to={`/app/detail/${todo.id}`}>{todo.name}</Link>
+              </td>
+              <td width="250">{todo.updatedAt}</td>
+            </tr>
+      ))}
         </tbody>
       </table>
-    );
+      );
   }
 }
 

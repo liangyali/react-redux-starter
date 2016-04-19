@@ -1,7 +1,6 @@
-import React, {PropTypes, Component} from 'react';
-import {Link} from 'react-router';
+import React, { Link } from 'react-router';
 
-class PageNotFound extends Component {
+class PageNotFound {
   render() {
     return (
       <div style={{
@@ -12,7 +11,7 @@ class PageNotFound extends Component {
           <Link to="/">Home Page</Link>
         </p>
       </div>
-    )
+      );
   }
 }
 
