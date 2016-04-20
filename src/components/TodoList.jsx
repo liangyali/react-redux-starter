@@ -1,7 +1,7 @@
-import React, {PropTypes} from 'react';
+import React, {PropTypes, Component} from 'react';
 import {Link} from 'react-router';
 
-class TodoList {
+class TodoList extends Component {
   render() {
     const todos = this.props.todos || {};
 

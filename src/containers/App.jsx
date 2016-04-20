@@ -21,8 +21,10 @@ class App extends Component {
 
     return (
       <div>
-        <div style={style}>
-          <button onClick={this.props.update} className="btn btn-sm btn-primary">更新</button>
+        <div
+          style={style}
+        >
+          <button onClick={this.props.update} className="btn btn-sm btn-primary">更新123</button>
           <br />
         </div>
         <TodoList todos={this.props.todos}/>

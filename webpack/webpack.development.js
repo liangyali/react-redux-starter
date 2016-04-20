@@ -32,6 +32,12 @@ module.exports = {
       test: /\.js|jsx$/,
       exclude: /(node_modules|bower_components)/,
       loaders: ['react-hot', 'babel'],
+    }, {
+      test: /\.css$/,
+      loaders: [
+        'style?sourceMap',
+        'css?modules&importLoaders=1&localIdentName=[path]_[name]_[local]_[hash:base64:5]'
+      ]
     }],
   },
 };

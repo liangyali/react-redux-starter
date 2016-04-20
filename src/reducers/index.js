@@ -1,11 +1,13 @@
 import {
   createReducer
-} from 'redux-create-reducer';
+}
+from 'redux-create-reducer';
 import {
   FETCH_TODOS_REQUEST,
   FETCH_TODOS_SUCCESS,
   FETCH_TODOS_FAILURE
-} from '../constants/ActionTypes';
+}
+from '../constants/ActionTypes';
 
 //default return state
 export const todos = createReducer({}, {
