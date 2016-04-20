@@ -13,7 +13,7 @@ module.exports = {
     filename: 'js/[name].js',
     publicPath: '/',
   },
-  devtool: '#sourcemap',
+  devtool: '#source_map',
   plugins: [
     new webpack.optimize.CommonsChunkPlugin(
       /* chunkName= */
@@ -24,9 +24,12 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
   ],
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   module: {
     loaders: [{
-      test: /\.jsx?$/,
+      test: /\.js|jsx$/,
       exclude: /(node_modules|bower_components)/,
       loaders: ['react-hot', 'babel'],
     }],

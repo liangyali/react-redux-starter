@@ -10,8 +10,8 @@ const app = koa();
 const dbg = debug('app');
 
 /**
-* Koa错误处理
-*/
+ * Koa错误处理
+ */
 
 /**
  * 测试环境webpack的集成

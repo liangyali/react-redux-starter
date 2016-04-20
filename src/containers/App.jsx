@@ -1,33 +1,37 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component, PropTypes} from 'react';
+import {connect} from 'react-redux';
 import TodoList from '../components/TodoList';
-import { fetchTodos } from '../actions/Todos';
+import {fetchTodos} from '../actions/Todos';
+
+const propTypes = {
+  update: PropTypes.func.isRequired,
+  todos: PropTypes.array.isRequired
+};
 
 class App extends Component {
-
-  propTypes : {
-  update: React.PropTypes.func.isRequired,
-  todos: React.PropTypes.array.isRequired
-  }
 
   componentDidMount() {
     this.props.update();
   }
 
   render() {
+    const style = {
+      margin: '20px 10px'
+    };
+
     return (
       <div>
-        <div style={{
-        margin: '20px 10px'
-      }}>
+        <div style={style}>
           <button onClick={this.props.update} className="btn btn-sm btn-primary">更新</button>
-          <br/>
+          <br />
         </div>
         <TodoList todos={this.props.todos}/>
       </div>
-      );
+    );
   }
 }
+
+App.propTypes = propTypes;
 
 function mapStateToProps(state) {
   return {

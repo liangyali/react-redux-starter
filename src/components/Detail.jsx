@@ -1,16 +1,19 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 
 class Detail {
   render() {
+    const style = {
+      padding: '20px',
+      fontSize: '24px'
+    };
     return (
-      <div style={{
-        padding: '20px',
-        fontSize: '24px'
-      }}>
-        <button className="btn btn-list" onClick={() => this.context.router.goBack()}>返回X</button>
+      <div style={style}>
+        <button className="btn btn-list" onClick={() => this.context.router.goBack()}>
+          返回
+        </button>
         <span>{JSON.stringify(this.props.params)}</span>
       </div>
-      );
+    );
   }
 }
 
