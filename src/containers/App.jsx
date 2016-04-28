@@ -1,11 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import TodoList from '../components/TodoList';
 import {fetchTodos} from '../actions/Todos';
-
+import Sidebar from '../components/Commons/Sidebar';
+import Header from '../components/Commons/Header';
 const propTypes = {
   update: PropTypes.func.isRequired,
-  todos: PropTypes.array.isRequired
 };
 
 class App extends Component {
@@ -15,19 +14,12 @@ class App extends Component {
   }
 
   render() {
-    const style = {
-      margin: '20px 10px'
-    };
-
     return (
       <div>
-        <div
-          style={style}
-        >
-          <button onClick={this.props.update} className="btn btn-sm btn-primary">更新123</button>
-          <br />
+        <Sidebar/>
+        <div className="content">
+          <Header>test</Header>
         </div>
-        <TodoList todos={this.props.todos}/>
       </div>
     );
   }

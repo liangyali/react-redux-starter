@@ -5,15 +5,16 @@ const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr';
 
 module.exports = {
   entry: {
-    bundle: [path.resolve(__dirname, '../src/main.js'), hotMiddlewareScript],
+    bundle: [path.join(__dirname, '../src/main.js'), hotMiddlewareScript],
     vendor: ['react', 'react-dom', 'redux', 'axios', hotMiddlewareScript],
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.join(__dirname, '../build'),
     filename: 'js/[name].js',
     publicPath: '/',
   },
   devtool: '#source_map',
+  watch: true,
   plugins: [
     new webpack.optimize.CommonsChunkPlugin(
       /* chunkName= */
@@ -33,10 +34,12 @@ module.exports = {
       exclude: /(node_modules|bower_components)/,
       loaders: ['react-hot', 'babel'],
     }, {
-      test: /\.css$/,
+      test: /\.css|less$/,
       loaders: [
         'style?sourceMap',
-        'css?modules&importLoaders=1&localIdentName=[path]_[name]_[local]_[hash:base64:5]'
+        'css?sourceMap&modules&importLoaders=1&' +
+        'localIdentName=[path]_[name]_[local]_[hash:base64:5]' +
+        '!autoprefixer?browsers=last 2 version!less',
       ]
     }],
   },

@@ -1,0 +1,10 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #ebeef0;
+}
+body, input, button, textarea, select {
+    font-family: "Hiragino Sans GB","Tahoma","microsoft yahei ui","microsoft yahei","simsun";
+}

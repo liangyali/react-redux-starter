@@ -3,9 +3,10 @@ import webpackMiddleware from 'koa-webpack-dev-middleware';
 import webpackHotMiddleware from 'koa-webpack-hot-middleware';
 import webpackConfig from '../webpack/webpack.development';
 
-export default function (app) {
+export default (app) => {
   if (app.env !== 'development') {
-    throw new Error('webpack请在开发环境下使用');
+    console.warn('webpack请在开发环境下使用');
+    return;
   }
 
   const compiler = webpack(webpackConfig);
@@ -23,4 +24,4 @@ export default function (app) {
   }));
 
   app.use(webpackHotMiddleware(compiler));
-}
+};

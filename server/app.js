@@ -37,6 +37,7 @@ app.context.render = render({
  * Koa静态资源中间件集成
  */
 app.use(require('koa-static')(path.join(__dirname, '../build')));
+app.use(require('koa-static')(path.join(__dirname, '../public')));
 
 /**
  * Koa路由中间件集成

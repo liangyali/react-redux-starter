@@ -8,8 +8,7 @@ from '../constants/ActionTypes';
 
 export function fetchTodos() {
   return (dispatch) => {
-    //TODO: Cache to local
-    //
+    // TODO: Cache to local
 
     dispatch({
       type: FETCH_TODOS_REQUEST
@@ -18,6 +17,7 @@ export function fetchTodos() {
       url: '/todos'
     }).then(
       resp => dispatch({
+        items: [],
         type: FETCH_TODOS_SUCCESS,
         payload: resp.data,
       }),
