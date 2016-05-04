@@ -1,10 +1,39 @@
 html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    background: #ebeef0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #ebeef0;
 }
 body, input, button, textarea, select {
-    font-family: "Hiragino Sans GB","Tahoma","microsoft yahei ui","microsoft yahei","simsun";
+  font-family: "Hiragino Sans GB", "Tahoma", "microsoft yahei ui", "microsoft yahei", "simsun";
+}
+.btn {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  padding: 8.5px 15px;
+  margin: 0;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 1;
+  height: auto;
+  white-space: nowrap;
+  text-transform: none;
+  font-weight: normal;
+  position: relative;
+  vertical-align: middle;
+  user-select: none;
+  animation-delay: .1s;
+  box-shadow: 0 10px 10px 0 rgba(60, 60, 60, .1);
+}
+.btn-default, .btn {
+  background-color: #ffffff;
+  color: #479ccf;
+  border: 1px solid #d3dbe2;
+}
+.btn-primary {
+  background-color: #479ccf;
+  color: #ffffff;
+  border: 1px solid #479ccf;
 }

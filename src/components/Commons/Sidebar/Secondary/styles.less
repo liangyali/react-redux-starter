@@ -1,0 +1,64 @@
+.nav {
+  position: absolute;
+  top: 0;
+  width: 180px;
+  height: 100%;
+  background-color: #31373d;
+  z-index: 1000;
+
+  .header {
+    height: 56px;
+    display: block;
+    border-bottom: 1px solid #272c30;
+    > h3 {
+      font-size: 16px;
+      padding-left: 20px;
+      margin: 0;
+      line-height: 56px;
+      color: rgb(160,178,197);
+    }
+  }
+
+  > ul {
+    position: absolute;
+    top: 56px;
+    margin-top: 15px;
+    .active {
+      > a {
+        background-color: #454e57;
+        color: #ffffff;
+        &:hover {
+          background-color: #454e57;
+          color: #ffffff;
+        }
+      }
+    }
+    > li {
+      display: list-item;
+      min-width: 40px;
+      > a {
+        overflow: hidden;
+        color: rgb(160,178,197);
+        line-height: 40px;
+        font-size: 14px;
+        padding: 0 10px 0 20px;
+        &:hover {
+          background-color: transparent;
+          color: #ffffff;
+          text-decoration: none;
+        }
+        &:focus {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
+.in {
+  transition: transform 200ms ease;
+  transform: translate3d(56px, 0, 0);
+}
+.out {
+  transition: transform 200ms ease;
+  transform: translate3d(230px, 0, 0);
+}

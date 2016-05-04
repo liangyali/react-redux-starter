@@ -1,10 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {fetchTodos} from '../actions/Todos';
-import Sidebar from '../components/Commons/Sidebar';
-import Header from '../components/Commons/Header';
+import {Header, Sidebar, PageContainer} from '../components/Commons';
 const propTypes = {
-  update: PropTypes.func.isRequired,
+  update: PropTypes.func.isRequired
 };
 
 class App extends Component {
@@ -17,9 +16,9 @@ class App extends Component {
     return (
       <div>
         <Sidebar/>
-        <div className="content">
-          <Header>test</Header>
-        </div>
+        <PageContainer>
+          <Header>测试数据</Header>
+        </PageContainer>
       </div>
     );
   }

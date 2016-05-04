@@ -13,7 +13,7 @@ module.exports = {
     filename: 'js/[name].js',
     publicPath: '/',
   },
-  devtool: '#source_map',
+  devtool: 'inline-source-map',
   watch: true,
   plugins: [
     new webpack.optimize.CommonsChunkPlugin(
