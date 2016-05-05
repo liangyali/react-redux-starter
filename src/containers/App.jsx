@@ -1,24 +1,21 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {fetchTodos} from '../actions/Todos';
-import {Header, Sidebar, PageContainer, PageContent} from '../components/Commons';
-const propTypes = {
-  update: PropTypes.func.isRequired
-};
+import {loginUser} from '../actions/authed';
+import {Header, Sidebar, Container, Content} from '../components/Commons';
 
 class App extends Component {
 
   componentDidMount() {
-    this.props.update();
+    this.props.loginUser();
   }
 
   render() {
     return (
       <div>
         <Sidebar/>
-        <PageContainer>
+        <Container>
           <Header>测试数据</Header>
-          <PageContent>
+          <Content>
             <div>
               <div className="form-group">
                 <label >应用程序AppKey</label>
@@ -27,25 +24,32 @@ class App extends Component {
                 <label >应用程序SecureKey</label>
                 <input type="password" className="form-control" id="exampleInputPassword1" placeholder=""/></div>
             </div>
-          </PageContent>
-        </PageContainer>
+            <button onClick={() => {
+              this.props.loginUser();
+            }}>reload</button>
+            <div>{this.props.authed.user.name}</div>
+          </Content>
+        </Container>
       </div>
     );
   }
 }
 
-App.propTypes = propTypes;
+App.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  authed: PropTypes.object.isRequired
+};
 
 function mapStateToProps(state) {
   return {
-    todos: state.todos || {}
+    authed: state.authed || {}
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    update: () => {
-      dispatch(fetchTodos('test'));
+    loginUser: () => {
+      dispatch(loginUser());
     }
   };
 }

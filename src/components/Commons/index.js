@@ -1,4 +1,11 @@
-export Header from './Header';
-export Sidebar from './Sidebar';
-export PageContainer from './PageContainer';
-export PageContent from './PageContent';
+import Header from './Header';
+import Sidebar from './Sidebar';
+import Container from './Container';
+import Content from './Content';
+
+export {
+  Header,
+  Sidebar,
+  Container,
+  Content
+};

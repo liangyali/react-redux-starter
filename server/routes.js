@@ -12,5 +12,19 @@ export default () => {
   router.get('/app/*', controllers.home.index);
   router.get('/todos', controllers.todos.index);
 
+  router.all('/auth', function*() {
+    this.body = {
+      status: 200,
+      accessToken: 'test'
+    };
+  });
+
+  router.all('/user', function*() {
+    this.body = {
+      name: 'liangyali',
+      age: 32
+    };
+  });
+
   return router.routes();
 };
