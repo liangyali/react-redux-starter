@@ -21,7 +21,7 @@ export default () => {
 
   router.all('/user', function*() {
     this.body = {
-      name: 'liangyali',
+      name: 'liangyali' + Math.random(),
       age: 32
     };
   });
