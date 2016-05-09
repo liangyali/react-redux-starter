@@ -11,7 +11,8 @@ body, input, button, textarea, select {
 .btn-default, .btn {
   background-color: #ffffff;
   color: #479ccf;
-  border: 1px solid #d3dbe2
+  border: 1px solid #d3dbe2;
+  font-size: 13px;
 }
 .btn-default:hover, .btn:hover, .btn-default:focus, .btn:focus, .btn-default.focus, .focus.btn, .btn-default:active, .btn:active, .btn-default.active, .active.btn {
   border: 1px solid #d3dbe2;
@@ -97,112 +98,4 @@ body, input, button, textarea, select {
 .btn-purchase:active, .btn-purchase.active, .btn-purchase.rte-command-active {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2) inset;
   background: #7ba232
-}
-input, .autocomplete-field, textarea {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 100%;
-  vertical-align: top;
-  height: 28px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  padding: 4px;
-  margin: 0;
-  border: 1px solid #d3dbe2;
-  display: inline-block;
-  color: #222;
-  border-radius: 3px
-}
-input:focus, .autocomplete-field:focus, input.focus, .focus.autocomplete-field, textarea:focus, textarea.focus {
-  border: 1px solid #479ccf;
-  outline: none
-}
-input.placeholder, .placeholder.autocomplete-field, textarea.placeholder {
-  color: #c3cfd8
-}
-input.success, .success.autocomplete-field, textarea.success {
-  border: 1px solid #acba8c
-}
-input.error, .error.autocomplete-field, textarea.error {
-  border-color: #cc4c3f;
-  background-color: #FFFCFC
-}
-input.large, .large.autocomplete-field, textarea.large {
-  height: 32px
-}
-input.slim, .slim.autocomplete-field, textarea.slim {
-  padding: 0 4px;
-  height: 24px
-}
-input[class*="span"], [class*="span"].autocomplete-field, textarea[class*="span"] {
-  margin: 0 0 5px 0;
-  float: none;
-  padding: 4px;
-  max-width: none
-}
-input.input-percentage, .input-percentage.autocomplete-field, textarea.input-percentage {
-  width: 45px
-}
-.form-group>label {
-  font-size: 14px;
-  font-weight: 300;
-}
-.ui-annotated-section {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  max-width: 1036px;
-  margin: 0 auto 20px
-}
-.ui-annotated-section__content {
-  -webkit-box-flex: 2;
-  -webkit-flex: 2 1 480px;
-  -ms-flex: 2 1 480px;
-  flex: 2 1 480px;
-  max-width: 100%;
-  min-width: 0
-}
-.ui-annotated-section__content .next-card {
-  border-radius: 0
-}
-.ui-annotated-section__annotation {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 0 240px;
-  -ms-flex: 1 0 240px;
-  flex: 1 0 240px;
-  color: #798c9c
-}
-.ui-annotated-section__title {
-  padding: 20px
-}
-.ui-annotated-section__description {
-  padding: 0 20px 20px 20px
-}
-.ui-annotated-section__description p {
-  margin-bottom: 10px
-}
-@media screen and (min-width: 720px) {
-  .ui-annotated-section {
-    padding-top: 20px
-  }
-  .ui-annotated-section + .ui-annotated-section {
-    border-top: 1px solid #d3dbe2
-  }
-  .ui-annotated-section__content {
-    padding: 0 20px
-  }
-  .ui-annotated-section__content .next-card {
-    border-radius: 3px
-  }
-  .ui-annotated-section__annotation {
-    padding: 0 20px
-  }
 }

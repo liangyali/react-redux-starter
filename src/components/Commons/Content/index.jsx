@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styles from './styles.less';
 
-class PageContent extends Component {
+class Content extends Component {
   render() {
     return (
       <div className={styles.content}>{this.props.children}</div>
@@ -9,8 +9,8 @@ class PageContent extends Component {
   }
 }
 
-PageContent.propTypes = {
-  children: React.PropTypes.object.isRequired
+Content.propTypes = {
+  children: React.PropTypes.array.isRequired
 };
 
-export default PageContent;
+export default Content;

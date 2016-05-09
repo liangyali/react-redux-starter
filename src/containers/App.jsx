@@ -1,12 +1,13 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {loginUser} from '../actions/authed';
+import {push} from 'react-router-redux';
+import {redirectToLogin, initAuthedUser} from '../actions/authed';
 import {Header, Sidebar, Container, Content} from '../components/Commons';
 
 class App extends Component {
 
   componentDidMount() {
-    this.props.loginUser();
+    this.props.initAuthedUser();
   }
 
   render() {
@@ -19,14 +20,12 @@ class App extends Component {
             <div>
               <div className="form-group">
                 <label >应用程序AppKey</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" placeholder="用户密码"/></div>
+                <input type="text" className="form-control" id="exampleInputEmail1" placeholder="用户密码"/></div>
               <div className="form-group">
                 <label >应用程序SecureKey</label>
                 <input type="password" className="form-control" id="exampleInputPassword1" placeholder=""/></div>
             </div>
-            <button onClick={() => {
-              this.props.loginUser();
-            }}>reload</button>
+            <button onClick={() => {}}>reload</button>
             <div>{this.props.authed.user.name}</div>
           </Content>
         </Container>
@@ -36,8 +35,9 @@ class App extends Component {
 }
 
 App.propTypes = {
-  loginUser: PropTypes.func.isRequired,
-  authed: PropTypes.object.isRequired
+  authed: PropTypes.object.isRequired,
+  redirectToLogin: PropTypes.func.isRequired,
+  initAuthedUser: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -48,8 +48,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    loginUser: () => {
-      dispatch(loginUser());
+    redirectToLogin: () => {
+      dispatch(initAuthedUser());
+      dispatch(push('/login'));
+    },
+    initAuthedUser: () => {
+      dispatch(initAuthedUser());
     }
   };
 }

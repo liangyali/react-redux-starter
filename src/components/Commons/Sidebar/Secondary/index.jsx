@@ -5,7 +5,6 @@ import classNames from 'classnames';
 class Secondary extends Component {
   todo() {}
   render() {
-    console.log(this.props.show);
     return (
       <div className={classNames(styles.nav, {
         [styles. in]: this.props.show === true,

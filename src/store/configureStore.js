@@ -1,14 +1,40 @@
 import {
-  createStore,
   applyMiddleware,
-  compose
-} from 'redux';
+  compose,
+  createStore
+}
+from 'redux';
+import {
+  routerMiddleware
+}
+from 'react-router-redux';
 import thunk from 'redux-thunk';
+import reducers from '../reducers';
 
-const middlewares = [thunk]
+export default (initialState = {}, history) => {
+  // ======================================================
+  // Middleware Configuration
+  // ======================================================
+  const middlewares = [thunk, routerMiddleware(history)];
 
-// export default function configureStore(reducers, initialState = {}) {
-//   return createStore(reducers, initialState, compose(thunk));
-// }
-//
-export default applyMiddleware(thunk)(createStore);
+  // ======================================================
+  // Store Enhancers
+  // ======================================================
+  const enhancers = [];
+  const devToolsExtension = window.devToolsExtension;
+  if (typeof devToolsExtension === 'function') {
+    enhancers.push(devToolsExtension());
+  }
+
+  // ======================================================
+  // Store Instantiation and HMR Setup
+  // ======================================================
+  const store = createStore(reducers, initialState, compose(
+    applyMiddleware(...middlewares),
+    ...enhancers
+  ));
+
+  store.asyncReducers = {};
+
+  return store;
+};

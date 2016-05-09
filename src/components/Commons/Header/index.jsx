@@ -6,23 +6,21 @@ class Header extends Component {
 
   render() {
     return (
-      <div className={classNames(styles.headerRow, 'row')}>
-        <div className={classNames(styles.main, 'col-md-6 col-sm-6')}>
+      <div className={classNames('container-fluid', styles.headerRow)}>
+        <div className={styles.main}>
           <i className="fa fa-shopping-bag"></i>
-          <span>订单管理</span>
+          <span className={styles.breadcrumb}>
+            <a>订单管理</a>
+          </span>
         </div>
-        <div className={classNames('col-md-6 col-sm-6', styles.actions)}>
+        <div className={styles.actions}>
           <button className="btn btn-primary">添加商品</button>
-          <button className="btn btn-disabled">修改商品</button>
-          <button className="btn btn-default">删除商品</button>
+          <button className="btn btn-default">Cancel</button>
+          <button className="btn btn-disabled">Disabled</button>
         </div>
       </div>
     );
   }
 }
-
-Header.propTypes = {
-  children: React.PropTypes.object.isRequired
-};
 
 export default Header;

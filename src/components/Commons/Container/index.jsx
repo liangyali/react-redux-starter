@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styles from './styles.less';
 
-class PageContainer extends Component {
+class Container extends Component {
 
   render() {
     return (
@@ -12,8 +12,8 @@ class PageContainer extends Component {
   }
 }
 
-PageContainer.propTypes = {
-  children: React.PropTypes.object.isRequired
+Container.propTypes = {
+  children: React.PropTypes.array.isRequired
 };
 
-export default PageContainer;
+export default Container;
