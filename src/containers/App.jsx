@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
-import {redirectToLogin, initAuthedUser} from '../actions/authed';
+import {initAuthedUser} from '../actions/authed';
 import {Header, Sidebar, Container, Content} from '../components/Commons';
 
 class App extends Component {
@@ -36,7 +35,6 @@ class App extends Component {
 
 App.propTypes = {
   authed: PropTypes.object.isRequired,
-  redirectToLogin: PropTypes.func.isRequired,
   initAuthedUser: PropTypes.func.isRequired
 };
 
@@ -48,10 +46,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    redirectToLogin: () => {
-      dispatch(initAuthedUser());
-      dispatch(push('/login'));
-    },
     initAuthedUser: () => {
       dispatch(initAuthedUser());
     }

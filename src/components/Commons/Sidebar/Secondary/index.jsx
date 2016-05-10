@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 import styles from './styles.less';
 import classNames from 'classnames';
 
@@ -20,9 +21,9 @@ class Secondary extends Component {
             </a>
           </li>
           <li className={styles.active}>
-            <a href="javascipt:void(0)">
+            <Link to={"/login"}>
               <span>商品管理</span>
-            </a>
+            </Link>
           </li>
           <li>
             <a href="javascipt:void(0)">
